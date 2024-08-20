@@ -1,0 +1,148 @@
+Top javascript questions asked in interview
+ 
+1. Program to find longest word in a given sentence ?
+
+2. How to check whether a string is palindrome or not ?
+
+3. Write a program to remove duplicates from an array ?
+
+4. Program to find Reverse of a string without using built-in method ?
+
+5. Find the max count of consecutive 1’s in an array ?
+
+6. Find the factorial of given number ?
+
+7. Given 2 arrays that are sorted [0,3,4,31] and [4,6,30]. Merge them and sort [0,3,4,4,6,30,31] ?
+
+8. Create a function which will accepts two arrays arr1 and arr2. The function should return true if every value in arr1 has its corresponding value squared in array2. The frequency of values must be same.
+
+9. Given two strings. Find if one string can be formed by rearranging the letters of other string.
+
+10. Write logic to get unique objects from below array ?
+I/P: [{name: "sai"},{name:"Nang"},{name: "sai"},{name:"Nang"},{name: "111111"}];
+O/P: [{name: "sai"},{name:"Nang"}{name: "111111"}]
+
+11. Write a JavaScript program to find the maximum number in an array.
+
+12. Write a JavaScript function that takes an array of numbers and returns a new array with only the even numbers.
+
+13. Write a JavaScript function to check if a given number is prime.
+
+14. Write a JavaScript program to find the largest element in a nested array.
+ [[3, 4, 58], [709, 8, 9, [10, 11]], [111, 2]]
+
+15. Write a JavaScript function that returns the Fibonacci sequence up to a given number of terms.
+
+16. Given a string, write a javascript function to count the occurrences of each character in the string.
+
+17. Write a javascript function that sorts an array of numbers in ascending order.
+
+18. Write a javascript function that sorts an array of numbers in descending order.
+
+19. Write a javascript function that reverses the order of words in a sentence without using the built-in reverse() method.
+
+20. Implement a javascript function that flattens a nested array into a single-dimensional array.
+
+21. Write a function which converts string input into an object
+ ("a.b.c", "someValue");
+ {a: {b: {c: "someValue"}}}
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Top JavaScript questions to clear your interview
+
+ 1. Explain the differences between == and ===.
+ Ans: - "=="
+             Performs type coercion if necessary.
+             It compares values after converting them to the same type.
+        "==="
+             Does not perform type coercion.
+             It compares both value and type.
+                
+
+ 2. What is event delegation, and how does it function in JavaScript?
+ Ans :- Event delegation is a technique used in JavaScript to handle events more 
+        efficiently by taking advantage of event bubbling. Instead of adding individual
+        event listeners to multiple child elements, you attach a single event listener to
+        a common ancestor (parent element). The event listener can then capture events triggered 
+        by any of its child elements due to event propagation.
+
+        How Event Delegation Works
+                  1. Event Bubbling :-  When an event is triggered on an element, it first runs its handler and 
+                     then bubbles up through its ancestor elements (parents) until it reaches the root (usually the document).
+                     Event delegation leverages this bubbling phase.
+
+                  2. Single Event Listener :-  Instead of attaching event listeners to every individual child element, you attach
+                     one event listener to a common parent. This listener can catch events from all its child elements, even if 
+                     they are dynamically added later.
+                     
+                 3. Identifying the Target :- When the event bubbles up to the parent, you can use the event object's target property
+                    to determine which child element triggered the event. This allows you to handle the event appropriately.
+
+ 3. Can you provide an illustration of how ES6 has altered the approach to working with "this" in JavaScript?
+
+ 4. Explain the concept of prototypal inheritance.
+
+ Ans : - Prototypal inheritance is a feature in JavaScript used to share properties and methods among objects.
+         JavaScript’s inheritance is prototype-based. Objects can inherit properties and methods directly from other objects.
+
+ 5. Differentiate between a variable that is null, undefined, or undeclared.
+
+ 6. Define what a closure is and describe its uses and advantages.
+
+ 7. Explain the primary distinction between the Array.forEach() loop and Array.map() method, as well as when to choose one over the other.
+
+ 8. What is a common scenario for employing anonymous functions?
+
+ 9. Distinguish between host objects and native objects.
+
+ 10. Clarify the distinctions among 'function User(){}', 'var user = User()', and 'var user = new User()'
+
+ 11. Can you elucidate the purposes of Function.call and Function.apply, along with their notable differences?
+
+ 12. Describe the Function.prototype.bind method.
+
+ 13. Explain the differences between feature detection, feature inference, and utilizing the User Agent (UA) string.
+
+ 14. Define the concept of "hoisting."
+
+ 15. What is type coercion, and what are some common pitfalls associated with relying on it in JavaScript code?
+
+ 16. Describe event bubbling and event capturing.
+
+ 17. What distinguishes an "attribute" from a "property"?
+
+ 18. List the advantages and disadvantages of extending built-in JavaScript objects.
+
+ 19. Discuss the same-origin policy's implications for JavaScript.
+
+ 20. Why is it referred to as a "Ternary operator," and what does the term "Ternary" signify?
+
+ 21. Define strict mode and outline some of its advantages and disadvantages.
+
+ 22. Analyze the pros and cons of writing JavaScript code in a language that compiles to JavaScript.
+
+ 23. What tools and techniques do you employ for debugging JavaScript code?
+
+ 24. Enumerate the benefits and drawbacks of immutability and explain how you can achieve it in your code.
+
+ 25. Differentiate between synchronous and asynchronous functions and elucidate the event loop.
+
+ 26. Explain the disparities between variables created using let, var, or const.
+
+ 27. Compare ES6 classes and ES5 function constructors, and furnish a use case for the arrow (=>) function syntax.
+
+ 28. Describe the advantages of using the arrow syntax for methods in constructors.
+
+ 29. Define a higher-order function and provide an example of object or array destructuring.
+
+ 30. Give an example of generating a string using ES6 Template Literals and explain their benefits.
+
+ 31. Provide an example of a curry function and clarify why this syntax can be advantageous.
+
+ 32. Discuss the benefits of using spread syntax and differentiate it from rest syntax.
+
+ 33. Explain how code sharing between files can be accomplished.
+
+ 34. Define what a promise is and describe its applications.
