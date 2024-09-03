@@ -47,6 +47,28 @@ O/P: [{name: "sai"},{name:"Nang"}{name: "111111"}]
  ("a.b.c", "someValue");
  {a: {b: {c: "someValue"}}}
 
+- Tree data structure
+- AVL Tree data structure
+- Tree traversal (Inorder, preorder, postorder)
+- Find height and width of a binary tree
+- Flatten a binary tree to linked list
+- Check if binary tree has path sum
+- Check if binary tree is symmetric
+- Check if binary tree is full
+- Print right view of a binary tree
+- Print left view of a binary tree
+- Print top view of a binary tree
+- Print bottom view of a binary tree
+- Diagonal traversal of a binary tree
+- Invert a binary tree | Recursive and Iterative
+- Find the floor and ceil of the binary tree
+- Find the least common ancestor (LCA) of a binary tree
+- Find the kth smallest and largest element in a binary tree
+- Serialize and deserialize a binary tree
+- Find the inorder successor of a given key in BST
+- Find the inorder predecessor of a given key in BST
+- Deepest leaves sum of a binary tree 
+
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -88,30 +110,184 @@ Top JavaScript questions to clear your interview
          JavaScript’s inheritance is prototype-based. Objects can inherit properties and methods directly from other objects.
 
  5. Differentiate between a variable that is null, undefined, or undeclared.
+ Ans : - 1. undefined - A variable that has been declared but has not been assigned a value.
+                        let x;
+                        console.log(x);
+
+         2.   null    - A variable that has been assign a represent of No value.
+                        let x = null;
+                        console.log(x); 
+
+         3. undeclared - A variable that has been not declear at a given poit of time.
+                         console.log(y)                             
 
  6. Define what a closure is and describe its uses and advantages.
+ Ans : - A closure in JavaScript is a function that has access to its own scope, the scope of the outer function, and the global scope,
+         even after the outer function has returned.
+
+         e.g - 
+
+         function outerFunction() {
+            let outerVariable = "I'm from the outer function";
+
+             function innerFunction() {
+                 console.log(outerVariable);
+             }
+
+             return innerFunction;
+         }
+
+         const closureFunction = outerFunction();
+         closureFunction(); // Output: "I'm from the outer function"
+
+         USES :- 
+         1.Data Privacy / Encapsulation:
+               Closures are commonly used to create private variables. In JavaScript,
+               there’s no native way to create truly private variables, but closures allow
+               you to encapsulate data and prevent it from being accessed directly from outside.
+
+         2.Function Factories:
+               Closures can be used to create functions with pre-configured values.
+
+         3.Maintaining State in Asynchronous Code:
+               Closures help maintain state in asynchronous programming, such as when using callbacks, promises, or event handlers.
+
+         Advantages of Closures :
+               1.Data Security: Private variables can't be tampered with directly from outside, helping in protecting data integrity.
+               2.Cleaner Code: Closures enable modular, reusable, and concise code.
+               3.State Preservation: Useful in preserving state across function calls, especially in asynchronous code.           
 
  7. Explain the primary distinction between the Array.forEach() loop and Array.map() method, as well as when to choose one over the other.
+          
+          1. forEach():
+                  Purpose: The forEach() method is designed to iterate over each element in an array and execute a function for each element.
+                  It is typically used when you want to perform a side effect, like logging or updating values, without needing to produce a new array.
+
+                  Return Value: It does not return a new array. Instead, it returns undefined
+          2.  map():
+                  Purpose: The map() method is designed to transform each element in an array and produce a new array with the transformed elements.
+                  It is primarily used when you need to derive a new array based on an existing one.
+                  Return Value: It returns a new array with the results of applying the provided function to each element.        
 
  8. What is a common scenario for employing anonymous functions?
+ Ans : - Anonymous functions are widely used in scenarios where a function is needed for a short duration, particularly when it doesn’t need to be reused or named. 
+
+         Anonymous functions are often passed as arguments to higher-order functions
+         like map(), filter(), forEach(), and reduce(). These are usually one-time operations that don’t require naming.
 
  9. Distinguish between host objects and native objects.
 
+        1. Native object :- Native objects are built into the JavaScript language itself and are available in
+                            any JavaScript environment. They are part of the ECMAScript specification.
+                            Examples:
+                                Array
+                                Object
+                                Function
+                                Date
+                                Math
+                                RegExp
+
+                            Characteristics:
+                                Defined by the ECMAScript standard.
+                                Present in all JavaScript environments.
+                                Provide core functionalities like data manipulation, mathematical operations, and handling dates.
+
+        2. Host Object  : - Host objects are provided by the environment in which JavaScript is running (e.g., a web browser or Node.js).
+                            They are not part of the JavaScript specification but are made available to support interaction with the environment.
+                        Examples:
+                           In Web Browsers:
+                                window
+                                document
+                                XMLHttpRequest
+                                console
+                           In Node.js:
+                                fs (File System module)
+                                http
+                                process
+                        Characteristics:
+                                Provided by the runtime environment (like a browser or Node.js).
+                                Allow interaction with features outside the core JavaScript engine, such as the DOM, network requests, or the file system.
+                        Summary:
+                                Native Objects are part of the core JavaScript language and are consistent across different environments.
+
+                                Host Objects are environment-specific and extend JavaScript’s capabilities to interact with the environment 
+                                (like the browser’s DOM or Node.js’s file system).        
+                                                        
+
  10. Clarify the distinctions among 'function User(){}', 'var user = User()', and 'var user = new User()'
+ Ans : -   function User() {}
+                    What It Is: This defines a function named User. In JavaScript, functions can serve two purposes: as regular functions (to be called) 
+                    or as constructors (to be used with new).
+           var user = User()
+                    What It Is: This calls the User function directly, executing the function’s code and assigning its return value (if any) to the variable user. 
+           var user = new User()
+                    What It Is: This creates a new instance of User using the constructor function.                
 
  11. Can you elucidate the purposes of Function.call and Function.apply, along with their notable differences?
+ Ans :-      1. Function.Call()  :- The call method allows you to invoke a function with a specific this value and pass arguments individually.
+
+             2. Function.apply() :- The apply method is similar to call, but it takes arguments as an array (or an array-like object) instead of individual arguments.
+
+                Key Differences Between call and apply:
+                            Argument Passing:
+                                call: Accepts arguments individually (e.g., arg1, arg2, arg3).
+                                apply: Accepts arguments as a single array (e.g., [arg1, arg2, arg3]).
+                            Use Cases:
+                                Use call when you know the number of arguments in advance and can list them out.
+                                Use apply when the arguments are already in an array or when you don’t know the exact number of arguments.
 
  12. Describe the Function.prototype.bind method.
 
  13. Explain the differences between feature detection, feature inference, and utilizing the User Agent (UA) string.
+            1. Feature Detection: The most reliable and recommended method. It directly checks if a feature is supported and is adaptable to future browser updates.
+
+            2. Feature Inference: Involves guessing that a feature is available based on another feature. This method is prone to errors and is less reliable.
+
+            3. User Agent String Detection: Relies on identifying the browser or device based on the UA string. This method is outdated, unreliable, and can be spoofed,
+               making it the least recommended approach.
+
+               In modern web development, feature detection is the preferred approach because it focuses on the actual capabilities of the environment, leading to more
+               robust and maintainable code.
 
  14. Define the concept of "hoisting."
+ Ans : -  Hoisting is a JavaScript behavior where variable and function declarations are moved (or "hoisted") to the top of their containing scope
+          (either the global scope or function scope)during the compile phase, before the code is actually executed.
+
+          Variable Hoisting: When a variable is declared using var, the declaration is hoisted to the top of its scope, but its initialization remains in place.
+                             If you reference the variable before the initialization, its value will be undefined.
+
+          let and const Hoisting: Variables declared with let and const are also hoisted, but they are not initialized until the code execution reaches the actual 
+                                  line of declaration. This means they are in a "temporal dead zone" from the start of the scope until the declaration is encountered,
+                                  and accessing them before their declaration results in a ReferenceError.  
+         Summary : -
+                                 Variable Hoisting: var declarations are hoisted and initialized with undefined, while let and const declarations are hoisted but not 
+                                 initialized until the actual declaration line (leading to a temporal dead zone).
+
+                                 Function Hoisting: Function declarations are fully hoisted and can be invoked before they are defined. Function expressions and arrow
+                                 functions are not hoisted in the same way, leading to different behavior depending on whether they are declared with var, let, or const.                                         
 
  15. What is type coercion, and what are some common pitfalls associated with relying on it in JavaScript code?
+ Ans : -  Type coercion in JavaScript refers to the automatic or implicit conversion of values from one data type to another. 
+
+          1. Implicit Coercion: Happens automatically when JavaScript encounters mixed types.
+                                 console.log(2 + "3"); // "23" (number 2 is coerced into a string, and then concatenated)
+                                 console.log("5" - 1); // 4 (string "5" is coerced into a number)
+
+          2. Explicit Coercion: Happens when you explicitly convert a value from one type to another using functions.
+                                console.log(Number("42")); // 42 (string "42" is explicitly converted to a number)
+                                console.log(String(100));  // "100" (number 100 is explicitly converted to a string)    
 
  16. Describe event bubbling and event capturing.
 
  17. What distinguishes an "attribute" from a "property"?
+ 
+ Ans : - Aspect	                                 Attributes	                                                 Properties
+          Where They Are Defined	         In the HTML markup	                                         On the JavaScript DOM object
+          Scope of Use	                         Used primarily for setting default values	                 Reflects and controls the current state of the element
+          Data Types	                         Always strings	                                                 Can be strings, numbers, booleans, objects, etc.
+          Example	                         type="text" (HTML attribute)	                                 input.type (JavaScript property)
+          Initial vs. Current State	         Represents the initial state defined in HTML	                 Represents the current state in the DOM object
+          Manipulation Methods	                 getAttribute(), setAttribute(), removeAttribute()	         Accessed or modified directly using dot notation
 
  18. List the advantages and disadvantages of extending built-in JavaScript objects.
 

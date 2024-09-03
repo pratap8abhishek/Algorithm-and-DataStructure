@@ -8,8 +8,9 @@ void lowestMissing(int arr[],int n){
 //     for (auto pair : mp) {
 //         cout << "Key: " << pair.first << " Value: " << pair.second <<endl;
 //     }
-for(int i=1;i<)
+for(int i=1;i<){
 
+}
 }
 int main(){
     int arr[] = {2,3,4,-1,10,-15};
