@@ -23,6 +23,13 @@ int main(){
     int arr[] = {1,4,3,2,6,7,9};
     int k = 9;
     int n = sizeof(arr)/sizeof(arr[0]);
-    binarysearch(arr,n,k);
+    int result = binarysearch(arr,n,k);
+
+    if (result != -1) {
+        cout << "Element found at index: " << result << endl;
+    } else {
+        cout << "Element not found" << endl;
+    }
+
     return 0;
 }
