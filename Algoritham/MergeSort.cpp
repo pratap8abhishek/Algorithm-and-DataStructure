@@ -29,8 +29,6 @@ void merge(int arr[],int left,int mid,int right){
     while( j < n2){
         arr[k++] = rightArr[j++];
     }
-
-
 }
 
 void mergeSort(int arr[],int left,int right){
