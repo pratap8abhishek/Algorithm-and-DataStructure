@@ -1,67 +1,50 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 class Node
 {
-public:
+    public:
     int data;
     Node* next;
+
+    Node(int new_data){
+        data = new_data;
+        next = nullptr;
+    }
 };
+Node* reverseList(Node* head){
+    Node *curr = head, *prev = nullptr, *next;
 
-Node* reverse(Node* head)
-{
-    if (!head)
-        return NULL;
-    Node* curr = head;
-    Node* next = NULL;
-    Node* prev = NULL;
-
-    while (curr != NULL)
+    while(curr != nullptr)
     {
         next = curr->next;
         curr->next = prev;
         prev = curr;
-        curr = next;
+        curr= next;
     }
-    head = prev;
-}
-
-    //  if (next != NULL)
-    //     head->next = reverse(next);
-
-
-    //  return prev;   
-// }
-
-void push(Node** head_ref, int new_data)
-{
-    Node* new_node = new Node();
-    new_node->data = new_data;
-    new_node->next = (*head_ref);
-    (*head_ref) = new_node;
+    return prev;
 }
 void printList(Node* node)
 {
-    while (node != NULL)
-    {
-        cout << node->data << " ";
+    while(node != nullptr){
+        cout<< " " << node->data;
         node = node->next;
     }
 }
 int main()
 {
-    Node* head = NULL;
-    push(&head, 9);
-    push(&head, 8);
-    push(&head, 7);
-    push(&head, 6);
-    push(&head, 5);
-    push(&head, 3);
-    push(&head, 2);
-    push(&head, 4);
-    cout << "Given Linklist \n";
-    printList(head);
-    head = reverse(head);
-    cout << "\nReverse LL of Given LL \n"<<" ";
-    printList(head);
-    head = reverse(head);
+ Node* head = new Node(1);
+ head->next = new Node(2);
+ head->next->next = new Node(3);
+ head->next->next->next = new Node(4);
+ head->next->next->next->next = new Node(5);
+
+ cout<<"Given Linked list:";
+ printList(head);
+
+ head = reverseList(head);
+
+ cout<<"\nReversed Linked List: ";
+ printList(head);
+
+ return 0;
 }

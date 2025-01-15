@@ -6,7 +6,7 @@ int partition(vector<int>& arr,int low,int high){
 
     int i = low - 1;
 
-    for(int j = low; i <= high-1; j++){
+    for(int j = low; j <= high-1; j++){
         if(arr[j] < pivot){
             i++;
             swap(arr[i],arr[j]);
@@ -17,7 +17,7 @@ int partition(vector<int>& arr,int low,int high){
 
 }
 
-int quicksort(vector<int>& arr,int low,int high){
+void quicksort(vector<int>& arr,int low,int high){
     if(low < high){
         int pi = partition(arr,low,high);
 
