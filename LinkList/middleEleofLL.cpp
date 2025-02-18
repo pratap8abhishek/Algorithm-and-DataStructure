@@ -1,45 +1,60 @@
 #include <bits/stdc++.h>
 using namespace std;
-class Node
-{
+
+class Node {
 public:
     int data;
-    Node *next;
-};
-void push(Node **head_ref, int new_data)
-{
-    Node *new_node = new Node();
-    new_node->data = new_data;
-    new_node->next = (*head_ref);
-    (*head_ref) = new_node;
-}
+    Node* next;
 
-int MiddleEle(Node* head)
-{
-    Node *slow_p = head;
-    Node *fast_p = head;
-
-    if (head != NULL)
-    {
-        while (fast_p != NULL && fast_p->next != NULL)
-        {
-            fast_p = fast_p->next->next;
-            slow_p = slow_p->next;
-        }
-        cout << "The middle element is [" << slow_p->data << "]" << endl;
+    Node(int val) {
+        data = val;
+        next = nullptr;
     }
+};
+
+// Function to find the middle of the linked list
+Node* findMiddle(Node* head) {
+    if (!head) return nullptr; // If the list is empty, return nullptr
+
+    Node* slow = head;
+    Node* fast = head;
+
+    // Move fast by two steps and slow by one step until fast reaches the end
+    while (fast && fast->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    return slow; // Slow pointer will be at the middle node
 }
 
-int main()
-{
-    Node* head = NULL;
-    push(&head, 10);
-    push(&head, 11);
-    push(&head, 12);
-    push(&head, 13);
-    push(&head, 14);
-    push(&head, 15);
+// Function to print the linked list
+void printList(Node* head) {
+    while (head) {
+        cout << head->data << " ";
+        head = head->next;
+    }
+    cout << endl;
+}
 
-    cout << MiddleEle(head);
+int main() {
+    // Create a linked list: 1 -> 2 -> 3 -> 4 -> 5 -> 6
+    Node* head = new Node(1);
+    head->next = new Node(2);
+    head->next->next = new Node(3);
+    head->next->next->next = new Node(4);
+    head->next->next->next->next = new Node(5);
+    head->next->next->next->next->next = new Node(6);
+
+    cout << "Original List: ";
+    printList(head);
+
+    Node* middle = findMiddle(head);
+    if (middle) {
+        cout << "Middle Node: " << middle->data << endl;
+    } else {
+        cout << "The list is empty." << endl;
+    }
+
     return 0;
 }
