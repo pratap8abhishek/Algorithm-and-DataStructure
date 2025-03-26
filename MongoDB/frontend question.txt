@@ -1,0 +1,26 @@
+Comparison of Session Storage, Local Storage, and Cookies Storage
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Feature	           Session Storage	                                            Local Storage	                                Cookies Storage
+
+Scope	           Per session                                               	Persistent (remains until manually cleared)	    Persistent (can have expiration date)
+                   (data is cleared when the tab/browser is closed)
+Storage 	        ~5MB	                                                        ~5MB	                                        ~4KB
+Limit
+
+Access	           Only within the same tab/window	                            Accessible from any tab of the same origin	    Sent to the server with every HTTP request
+
+Expiry	           Until the session ends	                                    Stays until manually deleted	                Can be set with an expiration date
+
+Security	       Not sent to the server	                                    Not sent to the server	                        Can be made secure (HttpOnly, Secure, SameSite)
+Usage	           Temporary storage for session-based data	                    Storing user preferences, themes, or	        Storing authentication tokens, 
+                                                                                tokens for later use                            session IDs, or small user data
+Server 	              No	                                                        No	                                            Yes (automatically sent with requests)
+Interaction
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+When to Use What?
+Session Storage → When you need data only for a single session (e.g., form data that shouldn't persist after a tab is closed).
+
+Local Storage → When you need to store data persistently (e.g., themes, user settings, or cache data).
+
+Cookies → When you need to send data to the server with every request (e.g., authentication tokens).
