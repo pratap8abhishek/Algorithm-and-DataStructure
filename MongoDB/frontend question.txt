@@ -1,9 +1,11 @@
 Comparison of Session Storage, Local Storage, and Cookies Storage
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Feature	           Session Storage	                                            Local Storage	                                Cookies Storage
 
-Scope	           Per session                                               	Persistent (remains until manually cleared)	    Persistent (can have expiration date)
-                   (data is cleared when the tab/browser is closed)
+Scope	           Per session                                               	Persistent 	                                     Persistent 
+                   (data is cleared when the tab/browser is closed)             (remains until manually cleared)                 (can have expiration date)
+
 Storage 	        ~5MB	                                                        ~5MB	                                        ~4KB
 Limit
 
@@ -12,10 +14,11 @@ Access	           Only within the same tab/window	                            Ac
 Expiry	           Until the session ends	                                    Stays until manually deleted	                Can be set with an expiration date
 
 Security	       Not sent to the server	                                    Not sent to the server	                        Can be made secure (HttpOnly, Secure, SameSite)
-Usage	           Temporary storage for session-based data	                    Storing user preferences, themes, or	        Storing authentication tokens, 
-                                                                                tokens for later use                            session IDs, or small user data
-Server 	              No	                                                        No	                                            Yes (automatically sent with requests)
-Interaction
+Usage	           Temporary storage for                	                    Storing user preferences, themes, or	        Storing authentication tokens, 
+                   session-based data                                           tokens for later use                            session IDs, or small user data
+
+Server 	              No	                                                    No	                                            Yes 
+Interaction                                                                                                                     (automatically sent with requests)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 When to Use What?
@@ -24,3 +27,82 @@ Session Storage → When you need data only for a single session (e.g., form dat
 Local Storage → When you need to store data persistently (e.g., themes, user settings, or cache data).
 
 Cookies → When you need to send data to the server with every request (e.g., authentication tokens).
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Q - 2 : - Hooks in React
+
+          Hooks are special functions in React that let you use state and other React features 
+          (like lifecycle methods) inside functional components, without needing to write a class.
+
+          Before Hooks, React components were either:
+
+          Class Components (with state & lifecycle methods)
+
+          Functional Components (stateless, simpler but limited)
+
+          Hooks allow functional components to have state and lifecycle features, 
+          making code simpler and more reusable.
+
+          Type : 
+
+          1️⃣ useState → Manages state in a functional component
+          2️⃣ useEffect → Runs side effects (like fetching data, updating the DOM)
+          3️⃣ useContext → Shares data across components without props
+          4️⃣ useRef → References DOM elements or persists values without re-rendering
+
+          Other Hooks : -
+
+           useReducer → Alternative to useState for complex state logic
+
+           useMemo → Optimizes performance by memoizing values
+
+           useCallback → Prevents unnecessary function re-creations
+
+           useLayoutEffect → Like useEffect, but runs before the screen updates
+
+----------- When to Use Hooks? : ----------------
+
+            When you need state in a functional component (useState)
+
+            When performing side effects (fetching data, timers) (useEffect)
+
+            When avoiding prop drilling (useContext)
+
+            When working with DOM elements directly (useRef)
+
+
+Q - 3 : - What is Prop Drilling?
+          Prop Drilling is when you pass data (props) from a parent component to deeply nested child components, 
+          even when intermediate components don't need that data.
+          It makes the code harder to maintain because intermediate components are only passing data without using it.
+
+Q - 4 : - What is an API Gateway?
+          An API Gateway is a server that sits between clients and backend services, 
+          acting as a single entry point for managing requests. 
+          It handles authentication, routing, rate limiting, caching, logging, and security in microservices architectures. 
+
+--------------- How an API Gateway Works ----------------
+
+          Client sends a request → GET /user/123
+
+          API Gateway processes the request
+             Checks authentication (JWT, API Key, OAuth, etc.)
+             Logs the request
+             Applies rate limiting
+
+          Routes the request to the appropriate microservice
+
+          Receives a response from the microservice
+
+          Modifies or aggregates the response (if needed)
+
+          Sends the response back to the client  
+
+
+Q - 4 : - what is Virtual DOM ?
+
+          The Virtual DOM (VDOM) is a lightweight representation of the actual DOM (Document Object Model)
+          The Virtual DOM creates a virtual copy of the actual DOM as a JavaScript object.
+          When the application state changes, a new Virtual DOM tree is created.
+          Only the changed parts are updated in the real DOM, improving performance.
+

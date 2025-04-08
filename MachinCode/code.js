@@ -32,6 +32,7 @@ function commonele(arr1,arr2){
 var arr1 = [1, 2, 3, 4, 5];
 var arr2 = [6, 7, 3, 8, 5];
 const result = commonele(arr1,arr2);
+console.log(result);
 
 // // Output: [3, 5]
 

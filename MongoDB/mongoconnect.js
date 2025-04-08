@@ -4,7 +4,7 @@ const mongoURI = 'mongodb://localhost:27017/mydatabase';
 
 mongoose.connect(mongoURI)
 .then(()=>console.log("mongoDB connected successfully"))
-.cath((err)=>console.log("mongoDB Not connected successfully"));
+.catch((err)=>console.log("mongoDB Not connected successfully"));
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -47,7 +47,7 @@ const mongoURI1 = 'mongodb://localhost:27017/mydatabase';
 
 mongoose.connect(mongoURI1)
 .then(()=>console.log("mongoDB connected successfully"))
-.cath((err)=>console.log("mongoDB Not connected successfully"));
+.catch((err)=>console.log("mongoDB Not connected successfully"));
 
 // Create a dynamic schema
 const dynamicSchema = new mongoose.Schema({}, { strict: false });
