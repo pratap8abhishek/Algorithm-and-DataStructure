@@ -123,5 +123,27 @@ function findUniqueElement(arr) {
 //   a ^ 0 = a
 //   So only the unique number remains.
 
+var reverseWords = function(s) {
+  return s.split( ' ')
+  .map(word=>word.split('').reverse().join(''))
+  .join(' ');
+};
+console.log(reverseWords("Let's take LeetCode contest"));
+
+
+// Output: "s'teL ekat edoCteeL tsetnoc"
+
+
+
+
+
+// Small letter which is not duplicated
+
+let result3 = [...str].filter( ch => ch >= 'a' && ch <= 'z' && str.indexOf(ch) === str.lastIndexOf(ch));
+console.log(result3);
+
+// Output: [ 'c', 'd' ]
+
+
 
 

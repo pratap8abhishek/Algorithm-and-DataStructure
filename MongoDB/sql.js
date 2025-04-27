@@ -33,6 +33,7 @@
 
 
 // 4/ How do you remove duplicate rows from a table while keeping only one occurrence?
+
 // 5/ Write a query to calculate the cumulative sum of transactions per user, ordered by date.
 
 // ...............................Ans...................................

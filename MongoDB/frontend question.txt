@@ -9,12 +9,12 @@ Scope	           Per session                                               	Pers
 Storage 	        ~5MB	                                                        ~5MB	                                        ~4KB
 Limit
 
-Access	           Only within the same tab/window	                            Accessible from any tab of the same origin	    Sent to the server with every HTTP request
+Access	        Only within the same tab/window	                            Accessible from any tab of the same origin	    Sent to the server with every HTTP request
 
-Expiry	           Until the session ends	                                    Stays until manually deleted	                Can be set with an expiration date
+Expiry	        Until the session ends	                                    Stays until manually deleted	                Can be set with an expiration date
 
-Security	       Not sent to the server	                                    Not sent to the server	                        Can be made secure (HttpOnly, Secure, SameSite)
-Usage	           Temporary storage for                	                    Storing user preferences, themes, or	        Storing authentication tokens, 
+Security	        Not sent to the server	                                    Not sent to the server	                        Can be made secure (HttpOnly, Secure, SameSite)
+Usage	           Temporary storage for                	                     Storing user preferences, themes, or	         Storing authentication tokens, 
                    session-based data                                           tokens for later use                            session IDs, or small user data
 
 Server 	              No	                                                    No	                                            Yes 
@@ -105,4 +105,111 @@ Q - 4 : - what is Virtual DOM ?
           The Virtual DOM creates a virtual copy of the actual DOM as a JavaScript object.
           When the application state changes, a new Virtual DOM tree is created.
           Only the changed parts are updated in the real DOM, improving performance.
+
+
+
+Q - 5 : - what is DNS ?
+
+          DNS stands for Domain Name System. It's basically the phonebook of the internet. 
+          DNS translates the human-friendly domain name into the machine-friendly IP address.
+
+
+Q - 6 : - what is BottalNack in Node Application ? 
+
+          If a Node.js application encounters a bottleneck, solving it depends on identifying where the bottleneck is happening
+          
+          1. Identify the Bottleneck
+          
+          Use profiling and monitoring tools to find what’s slowing things down:
+          
+          CPU Usage: top, htop, or node --inspect
+
+          Memory Leaks: clinic, heapdump, or memwatch
+
+          Slow Endpoints: Use middleware logging (e.g., morgan) or APM tools like New Relic, Datadog, or Prometheus
+
+          Custom Logging: Log timestamps around heavy operations
+
+          2. Common bottleneck causes in Node.js apps:
+
+               Blocking the event loop
+               Heavy synchronous operations
+               Poorly optimized database queries
+               Inefficient loops or algorithms
+               High memory usage or memory leaks
+               Network I/O delays (e.g., slow 3rd-party APIs)
+
+          3: Apply Fixes Based on Type 
+
+             1. Use Worker Threads / Child Processes
+
+                If the bottleneck is CPU-intensive (e.g., processing large files, data parsing):
+
+                const { Worker } = require('worker_threads');
+                // Offload to worker thread
+
+             2. Avoid Blocking Code
+                Use async/await or callbacks instead of synchronous code.
+
+             3. Optimize Database Access
+                Use proper indexes
+                Avoid N+1 queries
+                Batch DB writes/reads
+                Cache frequently accessed data (e.g., with Redis)
+
+
+
+Q - 7 : - What is index in MongoDB ?
+          An index is like a table of contents for your MongoDB collection. 
+          It helps MongoDB find documents faster, instead of scanning every document (a collection scan).
+
+          Why Use Indexes ?
+
+           Speed up queries (especially for large data)
+           Support sorting
+           Enforce uniqueness
+           Enable efficient filtering
+           
+         Create an Index
+           await collection.createIndex({ fieldName: 1 }); // 1 for ascending, -1 for descending
+
+         Unique Index
+           await collection.createIndex({ email: 1 }, { unique: true });
+
+         Compound Index (multiple fields)
+           await collection.createIndex({ firstName: 1, lastName: 1 });
+
+         View All Indexes
+           const indexes = await collection.indexes();
+           console.log(indexes);
+
+         Drop an Index
+           await collection.dropIndex('email_1'); // name of index
+
+
+
+
+
+
+
+Q - 8 : - 
+
+
+Q - 9 : - 
+
+Q - 10 : - 
+
+Q - 11 : - 
+
+Q - 12 : - 
+
+Q - 13 : - 
+
+Q - 14 : - 
+
+
+Q - 15 : - 
+
+Q - 16 : - 
+
 
