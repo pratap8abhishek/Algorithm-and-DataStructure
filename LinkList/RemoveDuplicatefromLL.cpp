@@ -1,36 +1,30 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-class Node
-{
+class Node{
     public:
     int data;
     Node* next;
+    Node(int val) {
+        data = val;
+        next = NULL;
+    }
 };
-
 void removeDuplicates(Node* head){
     Node* curr = head;
     Node* next_next;
     if(curr == NULL)
     return;
-
-    while(curr->next!=NULL){
+    
+    while(curr->next != NULL){
         if(curr->data == curr->next->data){
-            next_next = curr->next->next;
-            free(curr->next);
-            curr->next = next_next;
-        }
-        else{
+            Node* temp = curr->next;
+            curr->next = curr->next->next;
+            delete temp;
+        }else{
             curr = curr->next;
         }
     }
-}
-
-void push(Node** head_ref,int new_data){
-    Node* new_node = new Node();
-    new_node->data = new_data;
-    new_node->next = (*head_ref);
-    (*head_ref) = new_node;
-}
+} 
 void printList(Node* node){
     while(node != NULL){
         cout<<" "<<node->data;
@@ -39,23 +33,17 @@ void printList(Node* node){
 }
 int main()
 {
-    Node* head = NULL;
-    push(&head, 10);
-    push(&head, 10);
-    push(&head, 11);
-    push(&head, 11);
-    push(&head, 12);
-    push(&head, 12);
-    push(&head, 13);
-    push(&head, 13);
+  Node* head = new Node(1);
+  head->next = new Node(2);
+  head->next->next = new Node(3);
+  head->next->next->next = new Node(4);
+  head->next->next->next->next = new Node(4);
+  cout << "Linked list before duplicate removal " << endl;
+  printList(head);
 
-    cout << "Linked list before duplicate removal " << endl;
-    printList(head);
+  removeDuplicates(head);
 
-    removeDuplicates(head);
-
-    cout << "\nLinked list after duplicate removal " << endl;
-    printList(head);
-
-    return 0;
+  cout << "\nLinked list after duplicate removal " << endl;
+  printList(head);
+  return 0;
 }

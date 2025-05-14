@@ -187,19 +187,150 @@ Q - 7 : - What is index in MongoDB ?
            await collection.dropIndex('email_1'); // name of index
 
 
+Q - 8 : - what is SQL constraints ?
+
+          SQL constraints are used to specify rules for data in a table.
+          Constraints are used to limit the type of data that can go into a table. 
+          This ensures the accuracy and reliability of the data in the table.
+          
+          The following constraints are commonly used in SQL:
+
+          NOT NULL    -    Ensures that a column cannot have a NULL value
+          UNIQUE      -    Ensures that all values in a column are different
+          PRIMARY KEY -    A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+          FOREIGN KEY -    Prevents actions that would destroy links between tables
+          CHECK       -    Ensures that the values in a column satisfies a specific condition
+          DEFAULT     -    Sets a default value for a column if no value is specified
 
 
+Q - 9 : -  is Javascript is OOP's Language ?
+           Yes, Yes, JavaScript is an object-oriented programming (OOP) language,
+           but it works a bit differently compared to traditional class-based OOP languages like Java or C++.
+
+           Inheritance: Achieved using prototypes or the extends keyword with classes.
+           
+           Before ES6 (pre-2015):----------------------
+
+           JavaScript didn’t have the class keyword. 
+           Developers used constructor functions and prototypes to implement object-oriented behavior.
+
+           Let’s say you want to create a Dog that inherits from Animal.
+
+                    function Animal(name) {
+                        this.name = name;
+                        }
+
+                    Animal.prototype.speak = function() {
+                          console.log(`${this.name} makes a sound.`);
+                    };
 
 
+                    function Dog(name) {
+                        Animal.call(this, name); // Inherit constructor
+                      }
 
-Q - 8 : - 
+                    // Inherit methods
+                     Dog.prototype = Object.create(Animal.prototype);
+                     Dog.prototype.constructor = Dog;
+
+                   // Override speak method
+                     Dog.prototype.speak = function() {
+                       console.log(`${this.name} barks.`);
+                     };
+
+                    const dog = new Dog("Buddy");
+                    dog.speak(); // Buddy barks.
+                    
+
+                    Animal.call(this, name) copies the constructor logic from Animal into Dog.
+
+                    Dog.prototype = Object.create(Animal.prototype) sets up the prototype chain so Dog can inherit speak().
+
+                    Dog.prototype.constructor = Dog fixes the constructor pointer.
+
+                    The speak method is overridden.
 
 
-Q - 9 : - 
+                    Since ES6,----------------------
 
-Q - 10 : - 
+                    JavaScript supports class syntax, 
+                    making OOP-style coding easier and more familiar to developers from class-based languages.
+                    
+                    class Animal {
+                       constructor(name) {
+                          this.name = name;
+                     }
 
-Q - 11 : - 
+                     speak() {
+                         console.log(`${this.name} makes a sound.`);
+                     }
+
+                     class Dog extends Animal {
+                        speak() {
+                         console.log(`${this.name} barks.`);
+                        }
+                     }
+
+                    const dog = new Dog("Buddy");
+                    dog.speak(); // Buddy barks
+}
+Q - 10 : -  why Node js is single Threaded ?
+
+            Node.js is single-threaded by design because it uses an event-driven,
+            non-blocking I/O model, which is ideal for building scalable and high-performance web applications.
+
+            Node.js uses an event loop to handle multiple operations concurrently. 
+            Instead of creating new threads for each task, it registers callbacks and continues execution, 
+            handling tasks asynchronously when events are completed. 
+
+            Managing multiple threads comes with complexity:
+
+            Race conditions
+
+            Deadlocks
+
+            Context switching overhead
+
+            By staying single-threaded (at the JavaScript layer), Node.js avoids these issues, making code simpler and more predictable.
+            
+            ------------------------------Background I/O Operations (via libuv Thread Pool)-------------------------------------------------
+            
+            Node.js uses libuv, which creates a thread pool (by default 4 threads) to handle:
+
+            File system operations (e.g., fs.readFile)
+
+            DNS lookups (dns.lookup)
+
+            Some crypto operations (crypto.pbkdf2, crypto.scrypt)
+
+            These are offloaded from the event loop, 
+            processed in background threads, and 
+            the result is passed back via callbacks.
+
+            -----------------Worker Threads Module (Manual Multithreading)--------------------------
+            you can use the worker_threads module to manually spawn threads for CPU-bound tasks.
+
+            Use cases:
+
+            Heavy computation (e.g., data parsing, image processing)
+
+            Avoid blocking the main event loop
+
+            Compression (e.g., zlib)
+
+Q - 11 : - what is primary Key & Foregin Key ?
+          
+           PRIMARY KEY : - 
+
+           The PRIMARY KEY constraint uniquely identifies each record in a table.
+           Primary keys must contain UNIQUE values, and cannot contain NULL values.
+           A table can have only ONE primary key; and in the table, this primary key can consist of single or multiple columns (fields).
+          
+           FOREIGN KEY : -
+           
+           The FOREIGN KEY constraint is used to prevent actions that would destroy links between tables.
+           A FOREIGN KEY is a field (or collection of fields) in one table, that refers to the PRIMARY KEY in another table.
+           The table with the foreign key is called the child table, and the table with the primary key is called the referenced or parent table.
 
 Q - 12 : - 
 

@@ -135,8 +135,6 @@ console.log(reverseWords("Let's take LeetCode contest"));
 
 
 
-
-
 // Small letter which is not duplicated
 
 let result3 = [...str].filter( ch => ch >= 'a' && ch <= 'z' && str.indexOf(ch) === str.lastIndexOf(ch));
@@ -145,5 +143,64 @@ console.log(result3);
 // Output: [ 'c', 'd' ]
 
 
+// Given a string , remove all the duplicate elements from a string
 
+function removeDuplicates(str) {
+  return [...new Set(str)].join('');
+}
+ 
+// Example
+console.log(removeDuplicates('aabbccdde')); // Output: 'abcde'
+
+//////////////////////////////////
+function removeDuplicates(str) {
+  let result = '';
+  for (let char of str) {
+    if (!result.includes(char)) {
+      result += char;
+    }
+  }
+  return result;
+}
+
+// Example
+console.log(removeDuplicates('aabbccdde')); // Output: 'abcde'
+
+
+
+// Writing a program to find the closest palindrome time (hh:mm format) in js
+
+function isPalindrome(time)
+{
+    return time === time.split('').reverse().join('');
+}
+function closestPalindromeTime(time){
+    // time.split(':') → turns "12:34" into ['12', '34']
+    // .map(Number) → converts both parts to numbers: [12, 34]
+    // Assigns to h (hours) and m (minutes)
+    let[h,m] = time.split(":").map(Number);
+    
+    while(true){
+        // A loop that keeps checking every minute until a palindrome time is found.
+        
+       // Converts h and m to strings with leading 0s if needed (e.g. 9 → "09")
+       // Joins into "HH:MM" format
+        let timeStr = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}`;
+        
+        
+        if(isPalindrome(timeStr.replace(':',''))){
+            return timeStr;
+        }
+        // Adds one minute
+        // If minutes reach 60 → reset minutes to 0 and increment hour
+        // If hour reaches 24 → wrap around to 0 using % 24
+        m++;
+        if(m === 60){
+            m = 0;
+            h = (h+1) % 24;
+        }
+    }
+}
+console.log(closestPalindromeTime("12:34"));
+console.log(closestPalindromeTime("23:59"));
 
