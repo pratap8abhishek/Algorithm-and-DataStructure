@@ -74,18 +74,18 @@ int main() {
 
 
 // // Optimized BST checker using value range
-// bool isBSTUtil(Node* node, int minVal, int maxVal) {
-//     if (node == NULL)
-//         return true;
+bool isBSTUtil(Node* node, int minVal, int maxVal) {
+    if (node == NULL)
+        return true;
 
-//     if (node->data <= minVal || node->data >= maxVal)
-//         return false;
+    if (node->data <= minVal || node->data >= maxVal)
+        return false;
 
-//     return isBSTUtil(node->left, minVal, node->data) &&
-//            isBSTUtil(node->right, node->data, maxVal);
-// }
+    return isBSTUtil(node->left, minVal, node->data) &&
+           isBSTUtil(node->right, node->data, maxVal);
+}
 
-// // Wrapper function
-// bool isBST(Node* root) {
-//     return isBSTUtil(root, INT_MIN, INT_MAX);
-// }
+// Wrapper function
+bool isBST(Node* root) {
+    return isBSTUtil(root, INT_MIN, INT_MAX);
+}

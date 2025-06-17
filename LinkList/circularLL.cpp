@@ -41,7 +41,7 @@ int main()
     push(&head, 13);
     push(&head, 14);
     push(&head, 15);
-    if (isCircular)
+    if (isCircular(head))
     {
         cout << "Circular"
              << " ";
@@ -51,4 +51,5 @@ int main()
         cout << "not circular"
              << " ";
     }
+    return 0;
 }

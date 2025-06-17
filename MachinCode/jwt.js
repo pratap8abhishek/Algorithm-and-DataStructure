@@ -12,7 +12,7 @@ console.log(token);
 
 // Verify  a Token
 
-const token1 = "your_jwt_token";
+const token1 = "your_jwt_token"; 
 
 try {
     const decode = jwt.verify(token1,secretKey)

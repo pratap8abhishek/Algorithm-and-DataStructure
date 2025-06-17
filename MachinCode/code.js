@@ -102,7 +102,7 @@ app.patch("/patch",async (req,res)=>{
 
 app.delete("/delete",async (req,res)=>{
     const data = req.body;
-    const result = await Employee.deleteOne({ _id: data._id });
+    await Employee.deleteOne({ _id: data._id });
     res.send("Data deleted successfully");
 })
 

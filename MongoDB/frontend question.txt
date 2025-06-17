@@ -24,10 +24,10 @@ Interaction                                                                     
 When to Use What?
 Session Storage → When you need data only for a single session (e.g., form data that shouldn't persist after a tab is closed).
 
-Local Storage → When you need to store data persistently (e.g., themes, user settings, or cache data).
+Local Storage   → When you need to store data persistently (e.g., themes, user settings, or cache data).
 
-Cookies → When you need to send data to the server with every request (e.g., authentication tokens).
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Cookies Storage → When you need to send data to the server with every request (e.g., authentication tokens).
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Q - 2 : - Hooks in React
 
@@ -332,15 +332,140 @@ Q - 11 : - what is primary Key & Foregin Key ?
            A FOREIGN KEY is a field (or collection of fields) in one table, that refers to the PRIMARY KEY in another table.
            The table with the foreign key is called the child table, and the table with the primary key is called the referenced or parent table.
 
-Q - 12 : - 
+Q - 12 : - You have a Node.js app that interacts with multiple microservices, and one of them becomes unresponsive.
+           How would you handle such a situation to prevent your app from hanging ?
 
-Q - 13 : - 
+           this scenario is very common in distributed systems. If one microservice becomes unresponsive, and your Node.js app waits indefinitely, 
+           it can cause request pile-up, thread blocking, or complete system slowdown.
 
-Q - 14 : - 
+           Best Practices to Handle Unresponsive Microservices
+
+           1. Set Timeouts on HTTP Requests
+                  Always set timeouts for outgoing HTTP calls.
+
+           2. Use a Circuit Breaker
+                  Implement a circuit breaker pattern to avoid repeated calls to a failing service.
+                  Use libraries like:
+                  opossum
+                  cockatiel 
+
+           3. Retry with Backoff (Not Forever)
+                  Use retry logic, but limit it and apply exponential backoff.
+                  Retry 2–3 times max. Use libraries like:
+                      axios-retry
+                      retry npm package 
+
+           4. Fail Fast with Fallbacks
+                  If a critical service is down, return a cached/stub/fallback response instead of waiting.
+                  Example: return stale data or “Service temporarily unavailable” response.
+
+           5. Offload Non-Critical Services to Background Jobs
+                  If a service isn’t immediately needed (like sending emails or logging), 
+                  use a message queue (e.g., Redis + Bull, RabbitMQ) to offload it.                   
+
+Q - 13 : - Scenario: You’re building a high-traffic REST API that receives 1000+ requests per second.
+           Question: How would you scale your Node.js application to handle this load ?
+           
+
+              you need to combine code-level optimizations with infrastructure-level strategies. Here's a complete approach
+
+              1. Use Clustering / Worker Threads
+                  Node.js is single-threaded by default, so:
+                  - Use cluster module to spawn multiple Node.js processes (workers) across CPU cores.
+                  - Alternatively, use PM2 (a production-ready process manager) to manage clustering 
+                    and process restarts easily.
+
+              2. Use a Load Balancer
+                  Place a reverse proxy/load balancer (like Nginx or HAProxy) in front of your Node.js instances.
+                  It distributes incoming traffic evenly across the worker processes or instances. 
+              
+              3. Horizontal Scaling
+                  Use Docker containers or Kubernetes to deploy multiple instances of your API across machines.
+                  Use a cloud provider (AWS, GCP, Azure) with auto-scaling groups to scale based on CPU/RAM/load.
+
+              4. Efficient Asynchronous Code
+                  Avoid blocking code (like synchronous file reads or CPU-heavy tasks).
+                  Use async/await or Promise.all for parallel I/O operations.
+
+              5. Caching with Redis or In-Memory
+                  For frequently accessed data (e.g., user profiles, token checks), use a cache like Redis to reduce DB hits.
+                  You can use in-memory caching (e.g., LRU Cache) for small, fast-access values.
+
+Q - 14 : -  Scenario: Your Node.js server randomly crashes under load without a clear error in logs.
+            Question: How would you debug and stabilize the application? 
+                 
+              it often indicates underlying issues like memory leaks,unhandled rejections, or blocking operations. 
+
+Q - 15 : -  Scenario: A third-party API used in your app starts returning 500 errors.
+            Question: How would you handle this gracefully in production?
+
+Q - 16 : -  Scenario: Your API is public, and you start receiving suspicious traffic.
+            Question: What steps would you take to protect your Node.js app from abuse 
+            (e.g., rate limiting, brute force, injection)?
+
+            1. Rate Limiting
+               Prevent abuse (e.g., spamming endpoints) by limiting the number of requests per IP.
+            
+            2. IP Blacklisting / Whitelisting
+               Use firewall rules (e.g., Cloudflare, AWS WAF, nginx) or custom middleware to block known malicious IPs.
+            
+            3. Input Validation & Sanitization
+
+            4. Use CORS Carefully
+               Allow only trusted origins to access your API
+
+q  - 17 : - Scenario: A developer accidentally exposed an API key in a GitHub commit.
+            Question: What are the immediate and long-term steps you'd take?
+              
+            IMMEDIATE STEPS --------------
+
+            1. Revoke the Exposed API Key Immediately
+
+               Go to the API provider's dashboard and revoke/delete the exposed key.
+               If revocation isn’t possible, rotate the key (generate a new one and delete the old one)
+
+            2. Remove the Key from Git History
+
+            3. Notify Your Team
+               Alert the dev team or security team.
+               Document what was exposed and when.
+               Communicate any risks (e.g., access to third-party data, billing abuse).
+             
+            LONG-TERM PREVENTION STEPS--------------------
+               1. Move Secrets to Environment Variables
+                  Never store secrets in code. Use .env files and dotenv or config services.
+               
+               2. Add .env and Similar to .gitignore
+
+Q - 18  : - Scenario: A specific endpoint is very slow. After profiling, you find it's due to multiple sequential DB queries.
+            Question: How would you optimize this endpoint?
+
+            Technique	Use                     When	                              Benefit
+
+             Promise.all	            Queries are independent	              Reduces total wait time
+             Aggregation/Joins	      Data is related	                      Fewer DB round-trips
+             Indexing	                Queries are slow on large datasets    Faster query execution
+
+Q - 19 - : - Scenario: The CPU usage of your Node.js server spikes when processing large JSON payloads.
+             Question: What would you do to reduce CPU load and improve performance?
+
+             1. Set a JSON Payload Size Limit
+                Prevent abuse and accidental overload by limiting request size
+
+             2. Offload Heavy Parsing to a Worker Thread
+                If parsing or processing is CPU-heavy (e.g., JSON transform, validation), move it to a Worker Thread 
+
+             3. Use Streaming Parsers Instead of JSON.parse()
+                For huge JSON bodies (e.g., logs, metrics), use a streaming parser like JSONStream or stream-json 
+
+Q - 20 : -  Scenario: Your team needs to implement CI/CD for a Node.js API with full test coverage.
+            Question: What tools and steps would you use to set up testing and deployment?   
 
 
-Q - 15 : - 
+Scenario: You are calling 5 APIs in parallel, but you only need the fastest 3 results.
 
-Q - 16 : - 
+Question: How would you implement this logic efficiently?
 
+Scenario: You need to execute tasks in a specific order but they return Promises.
 
+Question: How would you enforce the execution order?                 
