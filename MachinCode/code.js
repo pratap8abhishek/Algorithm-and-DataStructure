@@ -204,3 +204,112 @@ function closestPalindromeTime(time){
 console.log(closestPalindromeTime("12:34"));
 console.log(closestPalindromeTime("23:59"));
 
+
+
+const arr1 = [1, [2, [3, [4, 5]]]];
+
+const flat1 = arr.flat(1);
+console.log(flat1);
+
+const flat2 = arr.flat(2);
+console.log(flat2);
+
+const flat3 = arr.flat(3);
+console.log(flat3);
+
+const flatAll = arr.flat(Infinity);
+console.log(flatAll);
+
+
+
+
+function flatten(arr){
+    return arr.reduce((acc,val)=>
+    Array.isArray(val) ? acc.concat(flatten(val)) : acc.concat(val),[]);
+}
+const arr = [1, [2, [3, [4, 5]]]];
+console.log(flatten(arr));
+
+
+
+
+// Promise.all([...]) runs all promises in parallel.
+// It waits until all have resolved, or rejects immediately if any fail.
+
+async function findData(req,res){
+    try{
+       const [data,data1,data2] = await Promise.all([
+           user.findAll(),
+           employee.findAll(),
+           salary.findAll()
+           ]); 
+           res.status(200).json({users:data,employee: data1, salaries:data2});
+    }catch (err){
+        console.log("error fetching data:",err);
+        res.status(500).json({error: "Internal server error"});
+    }
+}
+
+// Promise.allSettled() is used when you want to run multiple promises in parallel and handle the result of each, whether it succeeds or fails
+
+async function findData(req, res) {
+  try {
+    const results = await Promise.allSettled([
+      user.findAll(),
+      employee.findAll(),
+      salary.findAll()
+    ]);
+
+    const [userResult, employeeResult, salaryResult] = results;
+
+    const response = {
+      users: userResult.status === "fulfilled" ? userResult.value : null,
+      employees: employeeResult.status === "fulfilled" ? employeeResult.value : null,
+      salaries: salaryResult.status === "fulfilled" ? salaryResult.value : null,
+      errors: []
+    };
+
+    if (userResult.status === "rejected") {
+      response.errors.push({ type: "users", error: userResult.reason });
+    }
+    if (employeeResult.status === "rejected") {
+      response.errors.push({ type: "employees", error: employeeResult.reason });
+    }
+    if (salaryResult.status === "rejected") {
+      response.errors.push({ type: "salaries", error: salaryResult.reason });
+    }
+
+    res.status(200).json(response);
+  } catch (err) {
+    console.error("Unexpected error:", err);
+    res.status(500).json({ error: "Unexpected server error" });
+  }
+}
+
+
+// Promise.race() in JavaScript
+// Promise.race() returns a promise that resolves or rejects as soon as the first promise in the iterable resolves or rejects — whichever happens first.
+
+const p1 = new Promise(resolve => setTimeout(() => resolve("Result from p1"), 100));
+const p2 = new Promise(resolve => setTimeout(() => resolve("Result from p2"), 200));
+
+Promise.race([p1, p2]).then(result => {
+  console.log(result); // "Result from p1"
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
